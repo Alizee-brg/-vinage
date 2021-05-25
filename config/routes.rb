@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+  get 'bottles/index'
+  get 'bottles/show'
+  get 'cellars/show'
   devise_for :users
   root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :cellar, only: :show
+  resources :bottles, only: [:index, :show] do
+    resources :stocks, only: [:create]
+  end
 end
