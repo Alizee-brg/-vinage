@@ -1,2 +1,13 @@
-<h1>Bottles#show</h1>
-<p>Find me in app/views/bottles/show.html.erb</p>
+<h1> <%= @bottle.name %></h1>
+  <%= @bottle.vineyard %></h2>
+    <h5> <%= @bottle.year %></h5>
+    <h6> <%= @bottle.region.name %> - <%= @bottle.grape.name %></h6>
+    <p><%= @bottle.description %></p>
+    <%= @bottle.preservation_advice %>
+    La bouteille sera à son appogée en : <%= @bottle.year + 10 %>
+
+<p>  </p>
+
+<!-- quantity par bouteilles/index -->
+<!-- mettre possibilité update la quantiée  -->
+<!-- rajouter possibilité de mettre une photo  -->
