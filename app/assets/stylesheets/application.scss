@@ -20,10 +20,17 @@ body {
 #top-logo {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 1em 0;
+  padding-right: 1em;
   img {
     width: 50%;
+  }
+  .user {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #e5e5e5;
   }
 }
