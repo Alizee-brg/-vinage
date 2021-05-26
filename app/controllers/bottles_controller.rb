@@ -2,7 +2,11 @@ class BottlesController < ApplicationController
   before_action :set_bottle, only: [:show]
 
   def index
-    @bottles = Bottle.all
+    if params[:query].present?
+      @bottles = Bottle.search(params[:query])
+    else
+      @bottles = Bottle.all
+    end
   end
 
   def show

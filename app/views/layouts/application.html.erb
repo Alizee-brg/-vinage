@@ -15,6 +15,15 @@
     <%= render 'shared/top_logo' %>
     <%= render 'shared/app_navbar' %>
     <%= render 'shared/flashes' %>
+    
+    <%= form_tag bottles_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Rechercher un vin"
+      %>
+      <%= submit_tag "Rechercher", class: "" %>
+    <% end %>
 
     <%= yield %>
   </body>

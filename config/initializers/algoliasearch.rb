@@ -1,0 +1,1 @@
+AlgoliaSearch.configuration = { application_id: "07ZE318ATL", api_key: "e77b0ccd56f62a994b71bbe685571675", :symbolize_keys => false }
