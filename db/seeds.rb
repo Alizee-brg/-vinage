@@ -25,7 +25,7 @@ bottle = Bottle.new(
   name: "Luberon Rouge",
   vineyard: "Domaine de Fontenille",
   year: "2018",
-  description: "Un vin puissant, au tannin équilibrer, une acidité présente en bouche",
+  description: "Un vin puissant, au tannin équilibré, une acidité présente en bouche",
   grape: grape1,
   region: region1,
   wine_type: winetype2
@@ -37,7 +37,7 @@ Bottle.create(
    name: "Bordeaux Rouge",
    vineyard: "Mouton Cadet",
    year: "2017",
-   description: "Un vin puissant, au tannin équilibrer, une acidité présente en bouche",
+   description: "Un vin puissant, au tannin équilibré, une acidité présente en bouche",
    grape: grape2,
    region: region2,
    wine_type: winetype1
