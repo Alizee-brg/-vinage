@@ -1,0 +1,65 @@
+#cellar {
+  padding: 1em;
+  h1 {
+    font-weight: bold;
+  }
+  .cellar-alert {
+    margin: 1em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 0;
+    background-color: $lightgreen;
+    p {
+      margin: 0;
+      margin-right: 1em;
+    }
+  }
+  .cellar-overview {
+    width: 100%;
+    .cellar-img {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      img {
+        width: 120px;
+      }
+    }
+    .cellar-info {
+      margin-top: 1em;
+      padding: 2em;
+      border: 1px solid lightgrey;
+      background-color: #39393b;
+      color: white;
+      border-radius: 8px;
+      h3 {
+        font-size: 1.4em;
+      }
+    }
+  }
+  .cellar-list {
+    list-style: none;
+    padding: 2em 0;
+    a {
+      color: black;
+      text-decoration: none;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid lightgray;
+      padding: 1em 0;
+      img {
+        width: 30%;
+      }
+      .bottle-info {
+        flex: 1 1;
+      }
+      .apogee-indicator {
+        width: 30px;
+        height: 100%;
+        background-color: $lightgreen;
+      }
+    }
+  }
+}
