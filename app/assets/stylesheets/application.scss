@@ -18,12 +18,14 @@ body {
 }
 
 #top-logo {
+  z-index: 99;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1em 0;
   padding-right: 1em;
+  background-color: $whitebg;
   img {
     width: 50%;
   }

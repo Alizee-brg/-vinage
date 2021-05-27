@@ -12,7 +12,9 @@
   </head>
 
   <body>
-    <%= render 'shared/top_logo' %>
+    <section class="sticky-top">
+      <%= render 'shared/top_logo' %>
+    </section>
     <%= render 'shared/app_navbar' %>
     <%= render 'shared/flashes' %>
     
@@ -20,7 +22,8 @@
       <%= search_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Rechercher un vin"
+        placeholder: "Rechercher un vin",
+        anchor: "search"
       %>
       <%= submit_tag "Rechercher", class: "hidden"%>
     <% end %>
