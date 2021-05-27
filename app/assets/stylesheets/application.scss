@@ -11,3 +11,39 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  background-color: $whitebg;
+  overflow-x: hidden;
+}
+
+#top-logo {
+  z-index: 99;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 0;
+  padding-right: 1em;
+  background-color: $whitebg;
+  img {
+    width: 50%;
+  }
+  .user {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+#search-form {
+  width: 100%;
+  input {
+    padding: 1.5em;
+  }
+}
