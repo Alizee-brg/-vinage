@@ -5,6 +5,7 @@
     <h3> <%= bottle.year %></h3>
     <h3> <%= bottle.region.name %> - <%= bottle.grape.name %></h3>
     <p><%= bottle.description %></p>
+    <p><%= link_to "Détails de la bouteille", bottle_path(bottle) %></P>
     
   <% end %>
 
