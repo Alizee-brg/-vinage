@@ -1,4 +1,4 @@
 class Food < ApplicationRecord
-   belongs_to :bottle, through: :association
-
+   has_many :associations
+   has_many :bottles, through: :associations
 end
