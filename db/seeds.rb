@@ -154,7 +154,3 @@ puts "Terminé"
 # stock1 = Stock.create!(quantity: 5, cellar:cellar, bottle: Bottle.first)
 # stock2 = Stock.create!(quantity: 3, cellar:cellar, bottle: Bottle.last)
 
-
-
-
-

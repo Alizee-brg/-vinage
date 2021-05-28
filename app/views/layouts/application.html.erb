@@ -12,8 +12,21 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
+    <section class="sticky-top">
+      <%= render 'shared/top_logo' %>
+    </section>
+    <%= render 'shared/app_navbar' %>
     <%= render 'shared/flashes' %>
+    
+    <%= form_tag bottles_path, method: :get, id: "search-form" do %>
+      <%= search_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Rechercher un vin",
+        anchor: "search"
+      %>
+      <%= submit_tag "Rechercher", class: "hidden"%>
+    <% end %>
 
     <%= yield %>
   </body>
