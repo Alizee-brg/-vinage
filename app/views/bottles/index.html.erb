@@ -1,11 +1,7 @@
-<h1> Les bouteilles de ma cave : </h1>
+<h1> Les bouteilles disponibles : </h1>
   <% @bottles.each do |bottle| %>
     <h2><%= bottle.name %> - <%= bottle.vineyard %></h2>
-    <h5> <%= bottle.year %></h5>
-    <h6> <%= bottle.region.name %> - <%= bottle.grape.name %></h6>
+    <h3> <%= bottle.year %></h3>
+    <h3> <%= bottle.region.name %> - <%= bottle.grape.name %></h3>
     <p><%= bottle.description %></p>
   <% end %>
-
-<!-- quantité relative a la bouteille  -->
-<!-- pastille de si tout va bien ou pas  -->
-<!-- conseils globale de conservation  -->

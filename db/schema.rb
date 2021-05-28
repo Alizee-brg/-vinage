@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_144949) do
+ActiveRecord::Schema.define(version: 2021_05_28_123157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_05_25_144949) do
     t.bigint "grape_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
     t.index ["grape_id"], name: "index_bottles_on_grape_id"
     t.index ["region_id"], name: "index_bottles_on_region_id"
     t.index ["wine_type_id"], name: "index_bottles_on_wine_type_id"
