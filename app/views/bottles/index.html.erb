@@ -7,7 +7,7 @@
     <% @bottles.each do |bottle| %>
       <a href="<%= bottle_path(bottle) %>">
         <li>
-          <img src="" alt=" <%= bottle.name %> ">
+          <img src="<%= bottle.image %>" alt="<%= bottle.name %>">
           <div class="bottle-info">
             <h2><%= bottle.name %> - <%= bottle.vineyard %></h2>
             <h3> <%= bottle.year %></h3>
