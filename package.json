@@ -2,11 +2,13 @@
   "name": "_vinage",
   "private": true,
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.1.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "^3.6.0",
     "algoliasearch": "^4.9.1",
+    "autocomplete.js": "^0.38.0",
     "bootstrap": "4.6",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",

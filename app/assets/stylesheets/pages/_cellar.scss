@@ -1,14 +1,15 @@
 #cellar {
-  padding: 1em;
   h1 {
     font-weight: bold;
   }
   .cellar-alert {
-    margin: 1em 0;
+    position: sticky;
+    top: 5.6em;
+    margin-bottom: 1em;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1em 0;
+    padding: 0.5em 0;
     background-color: $lightgreen;
     p {
       margin: 0;
@@ -17,6 +18,7 @@
   }
   .cellar-overview {
     width: 100%;
+    padding: 0 1em;
     .cellar-img {
       display: flex;
       align-items: center;
@@ -25,21 +27,31 @@
         width: 120px;
       }
     }
+  }
+  .cellar-list {
+    margin-top: 2em;
+    border-radius: 16px 16px 0 0;
+    list-style: none;
+    padding: 0;
+    background-color: #fff;
     .cellar-info {
-      margin-top: 1em;
-      padding: 2em;
-      border: 1px solid lightgrey;
-      background-color: #39393b;
-      color: white;
-      border-radius: 8px;
+      padding: 1em;
+      color: $text-common;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid lightgrey;
+      .square-info {
+        flex: 1 1;
+        text-align: center;
+        padding: 1em 0;
+        span {
+          font-size: 0.8em;
+        }
+      }
       h3 {
         font-size: 1.4em;
       }
     }
-  }
-  .cellar-list {
-    list-style: none;
-    padding: 2em 0;
     a {
       color: black;
       text-decoration: none;
@@ -54,6 +66,10 @@
       }
       .bottle-info {
         flex: 1 1;
+        h4 {
+          font-size: 1.2em;
+          font-weight: bold;
+        }
       }
       .apogee-indicator {
         width: 30px;
