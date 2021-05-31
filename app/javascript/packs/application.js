@@ -22,7 +22,6 @@ require("channels");
 
 // External imports
 import "bootstrap";
-import { autocomplete } from "@algolia/autocomplete-js";
 import algoliasearch from "algoliasearch/lite";
 import { autocomplete, getAlgoliaResults } from "@algolia/autocomplete-js";
 
@@ -30,12 +29,12 @@ console.log("salut")
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-import { listenFocusTest } from "../channels/searchFocus";
+// import { listenFocusTest } from "../channels/searchFocus";
 
 document.addEventListener("turbolinks:load", () => {
   // Call your functions here, e.g:
   // initSelect2();
-  listenFocus();
+  // listenFocus();
 });
 
 const searchClient = algoliasearch(

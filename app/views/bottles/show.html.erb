@@ -10,10 +10,10 @@
 			<h2><%= @bottle.year %></h2>
 		</div>
 		<div class="image-show">
-			<%= image_tag "https://images.vivino.com/thumbs/d45NbXIqTrOY7GyHkW7iyw_pb_x600.png", alt: "#{@bottle.name}" %>
+		<img src="<%=@bottle.image%>" alt="">
 		</div>
 		<div class="informations">
-		<%= link_to "ajouter cette bouteille", "#", class: "button" %>
+		<%= link_to "ajouter cette bouteille", cellars_show_path, class: "button" %>
 		</div>
 		<div class="informations">
 			<p><%= @bottle.description %></p>
