@@ -11,10 +11,13 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/cellar";
+@import "pages/search";
 
 body {
   background-color: $whitebg;
   overflow-x: hidden;
+  padding-bottom: 6em;
 }
 
 #top-logo {
