@@ -9,25 +9,46 @@
 }
 
 .informations {
-  display: flex;
+ 
   text-align: center;
+
+  h1{
+    font-weight: bold;
+  }
+  h2 {
+  font-size: 1.6em;
+  }
+  h3 {
+    padding: 4px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  p{
+    padding: 2px;
+  }
 }
 
-.scroller {
-  width: 365px;
-  height: 667px;
-  overflow-y: scroll;
-  scrollbar-color: rebeccapurple green;
-  scrollbar-width: thin;
-}
 
 .button {
-  margin-left: auto;
-  margin-right: auto;
   background-color: #FF7F11;
   text-align: center;
   color: white;
   border-radius: 3%;
-  width: 15px;
-  height: 15px;
+  padding: 8px 24px;
+  transition: background 0.3s ease;
+  margin: 20px;
+  display: inline-block;
 }
+
+.button:hover {
+  background: #39393A;
+  color: white;
+}
+
+.fas-arrow-left {
+      color: white;
+      text-decoration: none;
+  }
+  .fas-arrow-left:hover{
+    background: #FF7F11;
+  }

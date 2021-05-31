@@ -1,4 +1,5 @@
-<div class="scroller">
+
+		<a class="fas fa-arrow-left"></a>
 		<div class="informations">
 			<h1><%= @bottle.name %></h1>
 		</div>
@@ -12,13 +13,15 @@
 			<%= image_tag "https://images.vivino.com/thumbs/d45NbXIqTrOY7GyHkW7iyw_pb_x600.png", alt: "#{@bottle.name}" %>
 		</div>
 		<div class="informations">
+		<%= link_to "ajouter cette bouteille", "#", class: "button" %>
+		</div>
+		<div class="informations">
 			<p><%= @bottle.description %></p>
 		</div>
 		<div class="informations">
-			<p><%= @bottle.preservation_advice %></p>
 			<p><%= "La bouteille sera à son appogée en : #{@bottle.year + 10}" %></p>
+			<p><%= @bottle.preservation_advice %></p>
 		</div>
-		<div>
+		<div class="informations">
 			<h3>Région : <%= @bottle.region.name %> - Cépages : <%= @bottle.grape.name %></h3>
 		</div>
-	</div>
