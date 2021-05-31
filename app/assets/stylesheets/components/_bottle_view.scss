@@ -1,0 +1,33 @@
+.image-show {
+	width: 70px;
+  margin-left: auto;
+    margin-right: auto;
+  img{
+    width: 100%;
+    
+  }
+}
+
+.informations {
+  display: flex;
+  text-align: center;
+}
+
+.scroller {
+  width: 365px;
+  height: 667px;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+
+.button {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FF7F11;
+  text-align: center;
+  color: white;
+  border-radius: 3%;
+  width: 15px;
+  height: 15px;
+}
