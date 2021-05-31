@@ -18,7 +18,7 @@
     <%= render 'shared/app_navbar' %>
     <%= render 'shared/flashes' %>
     
-    <%= form_tag bottles_path, method: :get, id: "search-form" do %>
+    <%= form_tag bottles_path, method: :get do %>
       <%= search_field_tag :query,
         params[:query],
         class: "form-control",
@@ -27,6 +27,9 @@
       %>
       <%= submit_tag "Rechercher", class: "hidden"%>
     <% end %>
+
+    <div id="autocomplete"></div>
+
 
     <%= yield %>
   </body>
