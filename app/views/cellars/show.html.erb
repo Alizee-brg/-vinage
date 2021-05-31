@@ -1,5 +1,5 @@
+
 <section id="cellar">
-  <h1>Bonjour, Léo</h1>
   <div class="cellar-alert">
     <p>Aucune action à effectuer</p>
     <i class="fas fa-check-circle"></i>
@@ -7,76 +7,39 @@
 
   <div class="cellar-overview">
     <div class="cellar-img">
+    <% @cellar.bottles.last(3).each do |bottle|%>
       <img
-        src="https://res.cloudinary.com/dmiifjsrk/image/upload/c_scale,w_200/v1622123199/vieilles_vignes_chinon_pexc9g.png"
-        alt=""
+        src="<%= bottle.image %>"
+        alt="<%= bottle.name.strip %>"
       />
-      <img
-        src="https://res.cloudinary.com/dmiifjsrk/image/upload/v1622123200/chateau_cliems_xhg5mp.png"
-        alt=""
-      />
-      <img
-        src="https://res.cloudinary.com/dmiifjsrk/image/upload/c_scale,w_200/v1622123198/chateau_tuileries_fiec8l.png"
-        alt=""
-      />
-    </div>
-    <div class="cellar-info">
-      <h3>100 bouteilles</h3>
-      <h3>3 bouteilles à leur appogée</h3>
+    <% end %>
     </div>
   </div>
   <ul class="cellar-list">
-    <a href="#">
+    <div class="cellar-info">
+      <div class="square-info">
+        <h3><i class="fas fa-wine-bottle"></i> <%= @cellar.bottles.count %></h3>
+        <span>bouteille<%= "s" if @cellar.bottles.count > 1 %></span>
+      </div>
+      <div class="square-info">
+        <h3><i class="fas fa-medal"></i> <%= @cellar.bottles.where('year >= peak_year').count %></h3>
+        <span>bouteille<%= "s" if @cellar.bottles.where('year >= peak_year').count > 1 %> prête</span>
+      </div>
+    </div>
+    <% @cellar.bottles.each do |bottle|%>
+    <a href="<%= bottle_path(bottle) %>">
       <li>
         <img
-          src="https://res.cloudinary.com/dmiifjsrk/image/upload/c_scale,w_200/v1622123198/chateau_tuileries_fiec8l.png"
-          alt=""
+          src="<%= bottle.image %>"
+          alt="<%= bottle.name.strip %>"
         />
         <div class="bottle-info">
-          <h4>Bottle's name</h4>
-          <span>XXXX</span>
+          <h4><%= bottle.name.strip %></h4>
+          <span><%= bottle.year if bottle.year > 0 %></span>
         </div>
         <div class="apogee-indicator"></div>
       </li>
     </a>
-    <a href="#">
-      <li>
-        <img
-          src="https://res.cloudinary.com/dmiifjsrk/image/upload/c_scale,w_200/v1622123198/chateau_tuileries_fiec8l.png"
-          alt=""
-        />
-        <div class="bottle-info">
-          <h4>Bottle's name</h4>
-          <span>XXXX</span>
-        </div>
-        <div class="apogee-indicator"></div>
-      </li>
-    </a>
-    <a href="#">
-      <li>
-        <img
-          src="https://res.cloudinary.com/dmiifjsrk/image/upload/c_scale,w_200/v1622123198/chateau_tuileries_fiec8l.png"
-          alt=""
-        />
-        <div class="bottle-info">
-          <h4>Bottle's name</h4>
-          <span>XXXX</span>
-        </div>
-        <div class="apogee-indicator"></div>
-      </li>
-    </a>
-    <a href="#">
-      <li>
-        <img
-          src="https://res.cloudinary.com/dmiifjsrk/image/upload/c_scale,w_200/v1622123198/chateau_tuileries_fiec8l.png"
-          alt=""
-        />
-        <div class="bottle-info">
-          <h4>Bottle's name</h4>
-          <span>XXXX</span>
-        </div>
-        <div class="apogee-indicator"></div>
-      </li>
-    </a>
+    <% end %>
   </ul>
 </section>
