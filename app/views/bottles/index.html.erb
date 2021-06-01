@@ -1,9 +1,8 @@
 <section id="results">
   <h1> Voici ce que nous avons... </h1>
-
-  <ul class="result-list">
+    <ul class="result-list">
     <% @bottles.each do |bottle| %>
-      <li>
+      <li data-type="<%=bottle.wine_type.name%>">
         <a class="bottle-show" href="<%= bottle_path(bottle) %>">
           <img src="<%= bottle.image %>" alt="<%= bottle.name %>">
 
