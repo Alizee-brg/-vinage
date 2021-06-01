@@ -21,7 +21,7 @@
     <%= form_tag bottles_path, method: :get do %>
       <%= search_field_tag :query,
         params[:query],
-        class: "form-control",
+        class: "search-form",
         placeholder: "Rechercher un vin",
         anchor: "search"
       %>

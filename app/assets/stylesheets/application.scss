@@ -44,9 +44,12 @@ body {
   display: none;
 }
 
-#search-form {
+.search-form {
   width: 100%;
-  input {
-    padding: 1.5em;
+  padding: 1.3em 1em;
+  border: none;
+  &:focus {
+    border: none;
+    outline: none;
   }
 }
