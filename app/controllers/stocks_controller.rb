@@ -13,9 +13,10 @@ class StocksController < ApplicationController
       redirect_to cellar_path
     end
   end
+
   private
+
   def stocks_params
     params.require(:stocks).permit(:quantity)
   end
-end
 end

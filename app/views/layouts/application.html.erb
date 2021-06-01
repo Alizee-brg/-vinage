@@ -17,16 +17,17 @@
     </section>
     <%= render 'shared/app_navbar' %>
     <%= render 'shared/flashes' %>
-    
+
     <%= form_tag bottles_path, method: :get, id: "search-form" do %>
       <%= search_field_tag :query,
         params[:query],
-        class: "form-control",
+        class: "search-form",
         placeholder: "Rechercher un vin",
         anchor: "search"
       %>
       <%= submit_tag "Rechercher", class: "hidden"%>
     <% end %>
+
 
     <%= yield %>
 

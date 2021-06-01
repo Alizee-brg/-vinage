@@ -1,12 +1,10 @@
-const listenFocusTest = () => {
+const listenFocus = () => {
   const searchBtn = document.getElementById("search-caller");
 
-  const searchBar = document.getElementById("search-form");
+  const searchBar = document.getElementById("query");
   searchBtn.addEventListener("click", (e) => {
     e.preventDefault();
     searchBar.focus();
-    console.log("focus");
-    return True;
   });
 };
-export { listenFocusTest };
+export { listenFocus };

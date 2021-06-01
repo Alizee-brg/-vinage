@@ -1,16 +1,25 @@
-<h1> Les bouteilles de ma cave : </h1>
+<section id="results">
+  <h1> Voici ce que nous avons... </h1>
 
-  <% @bottles.each do |bottle| %>
-    <h2><%= bottle.name %> - <%= bottle.vineyard %></h2>
-    <h3> <%= bottle.year %></h3>
-    <h3> <%= bottle.region.name %> - <%= bottle.grape.name %></h3>
-    <p><%= bottle.description %></p>
-    
-  <% end %>
+  <ul class="result-list">
+    <% @bottles.each do |bottle| %>
+      <a href="<%= bottle_path(bottle) %>">
+        <li>
+          <img src="<%= bottle.image %>" alt="<%= bottle.name %>">
+          <div class="bottle-info">
+            <h2><%= bottle.name %> - <%= bottle.vineyard %></h2>
+            <h3> <%= bottle.year %></h3>
+            <h3> <%= bottle.region.name %> - <%= bottle.grape.name %></h3>
+          </div>
+        </li>
+      </a>
+    <% end %>
+  </ul>
 
+</section>
 <!-- pastille de si tout va bien ou pas  -->
 <!-- conseils global de conservation  -->
 
-  <!-- ajouter la température de chaque bouteille. 
-  créer moyenne de température. afficher conseil de conservation en créant des seuils. 
+  <!-- ajouter la température de chaque bouteille.
+  créer moyenne de température. afficher conseil de conservation en créant des seuils.
   Potentiellement créer ces seuils en fonction du type de et afficher des informations spécifiques le type de vin concerné -->
