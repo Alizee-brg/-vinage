@@ -3,16 +3,20 @@
 
   <ul class="result-list">
     <% @bottles.each do |bottle| %>
-      <a href="<%= bottle_path(bottle) %>">
-        <li>
+      <li>
+        <a class="bottle-show" href="<%= bottle_path(bottle) %>">
           <img src="<%= bottle.image %>" alt="<%= bottle.name %>">
+
           <div class="bottle-info">
-            <h2><%= bottle.name %> - <%= bottle.vineyard %></h2>
-            <h3> <%= bottle.year %></h3>
-            <h3> <%= bottle.region.name %> - <%= bottle.grape.name %></h3>
+            <h2><%= bottle.name %></h2>
+            <% if bottle.year > 0 %>
+            <h3><%= bottle.year %></h3>
+            <% end %>
+            <p class="grape"><%= bottle.grape.name %></p>
           </div>
-        </li>
-      </a>
+        </a>
+        <a href="" class="add">+</a>
+      </li>
     <% end %>
   </ul>
 
