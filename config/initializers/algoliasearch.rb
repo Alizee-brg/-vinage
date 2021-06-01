@@ -1,1 +1,1 @@
-AlgoliaSearch.configuration = { application_id: ENV['algolia_id'], api_key: ENV['algolia_key'], :symbolize_keys => false }
+AlgoliaSearch.configuration = { application_id: ENV['ALGOLIA_APPLICATION_ID'], api_key: ENV['ALGOLIA_API_KEY'], :symbolize_keys => false }

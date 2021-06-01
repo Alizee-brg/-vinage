@@ -8,7 +8,9 @@
 # end
 # puts "Done"
 
+User.destroy_all
 user = User.create!(email: 'lol@lol.com', password: 'azerty')
+
 csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
 
 region_table = CSV.parse(File.read('lib/seeds/regions.csv'), csv_options)
