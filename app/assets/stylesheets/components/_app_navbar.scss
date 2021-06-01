@@ -2,6 +2,7 @@ nav {
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 99;
   background-color: $whitebg;
   -webkit-box-shadow: 10px 10px 76px -1px rgba(84, 170, 255, 0.21);
   -moz-box-shadow: 10px 10px 76px -1px rgba(84, 170, 255, 0.21);
