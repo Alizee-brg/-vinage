@@ -1,27 +1,29 @@
 
-		<a class="fas fa-arrow-left" href="/"></a>
-		<div class="informations">
+		<a class="return-button" href="/"><i class="fas fa-arrow-left"></i> Home </a>
+		<div class="informations-bottle">
+		
 			<h1><%= @bottle.name %></h1>
+			
 		</div>
-		<div class="informations">
+		<div class="informations-bottle">
 			<h2><%= @bottle.vineyard %></h2>
 		</div>
-		<div class="informations">
+		<div class="informations-bottle">
 			<h2><%= @bottle.year %></h2>
 		</div>
-		<div class="image-show">
+		<div class="image-show-bottle">
 		<img src="<%=@bottle.image%>" alt="">
 		</div>
-		<div class="informations">
+		<div class="informations-bottle">
 		<%= link_to "ajouter cette bouteille", cellars_show_path, class: "button" %>
 		</div>
-		<div class="informations">
+		<div class="informations-bottle">
 			<p><%= @bottle.description %></p>
 		</div>
-		<div class="informations">
+		<div class="informations-bottle">
 			<p><%= "La bouteille sera à son appogée en : #{@bottle.year + 10}" %></p>
-			<p><%= @bottle.preservation_advice %></p>
+			<p>Température idéale pour la conservation: <br><%= @bottle.preservation_advice %></p>
 		</div>
-		<div class="informations">
+		<div class="informations-bottle">
 			<h3>Région : <%= @bottle.region.name %> - Cépages : <%= @bottle.grape.name %></h3>
 		</div>

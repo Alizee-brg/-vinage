@@ -1,16 +1,18 @@
-.image-show {
+.image-show-bottle {
 	width: 200px;
   margin-left: auto;
-    margin-right: auto;
+  margin-right: auto;
+  
   img{
     width: 100%;
     
   }
 }
 
-.informations {
+.informations-bottle {
  
   text-align: center;
+  
 
   h1{
     font-weight: bold;
@@ -45,11 +47,12 @@
   color: white;
 }
 
-.fas-arrow-left {
-      color: white;
-      text-decoration: none;
-      size: 3x;
-  }
-  .fas-arrow-left:hover{
-    background: #FF7F11;
-  }
+.return-button {
+    color: #FF7F11;
+    transition: color 0.3s ease;
+    align-items: flex-start;
+}
+
+.return-button:hover {
+  color: #39393A;
+}
