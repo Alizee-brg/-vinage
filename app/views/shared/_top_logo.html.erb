@@ -1,0 +1,13 @@
+<div id="top-logo">
+  <img
+    src="https://res.cloudinary.com/dd5byfbax/image/upload/v1622039650/vinage-removebg-preview_jfqoqj.png"
+    alt="vinage logo"
+  />
+  <div class="user">
+    <% unless user_signed_in? %>
+    <a class="login-btn" href="<%= user_session_path %>">Se connecter</a>
+    <% else %>
+    <a class="setting-btn" href="<%= destroy_user_session_path %>" data-method="delete"><i class="fas fa-sign-out-alt"></i></a>
+    <% end %>
+  </div>
+</div>

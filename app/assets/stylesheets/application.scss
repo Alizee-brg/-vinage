@@ -32,11 +32,16 @@ body {
   img {
     width: 50%;
   }
-  .user {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background-color: #e5e5e5;
+  .login-btn {
+    padding: 1em;
+    background-color: $prim;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 4px;
+  }
+  .setting-btn {
+    color: $text-common;
+    font-size: 1.5em;
   }
 }
 
@@ -44,9 +49,12 @@ body {
   display: none;
 }
 
-#search-form {
+.search-form {
   width: 100%;
-  input {
-    padding: 1.5em;
+  padding: 1.3em 1em;
+  border: none;
+  &:focus {
+    border: none;
+    outline: none;
   }
 }
