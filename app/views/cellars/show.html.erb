@@ -5,6 +5,25 @@
     <i class="fas fa-check-circle"></i>
   </div>
 
+  <% data = current_user.my_wine_types %>
+  <% wine_colors = {
+    "Rouge" => "#BB0000",
+    "Blanc - Sec" => "#F5F5F5",
+    "Blanc - Moelleux" => "#C7C3BD",
+    "Blanc - Liquoreux" => "#989186",
+    "Rosé - Moelleux" => "#E5769F",
+    "Rosé - Sec" => "#F1B5CB",
+    "Vin pétillant" => "#FBEAB1",
+    "Vin pétillant - Demi sec" => "#F7D978"
+    } %>
+  <% colors = [] %>
+
+  <% data.each do |score, _| %>
+    <% colors << wine_colors[score] %>
+  <% end %>
+
+  <%= pie_chart data, colors: colors %>
+
   <div class="cellar-overview">
     <div class="cellar-img">
     <% @cellar.bottles.last(3).each do |bottle|%>
@@ -36,6 +55,7 @@
         <div class="bottle-info">
           <h4><%= bottle.name.strip %></h4>
           <span><%= bottle.year if bottle.year > 0 %></span>
+          <p class="grape"><%= bottle.grape.name %></p>
         </div>
         <div class="apogee-indicator"></div>
       </li>

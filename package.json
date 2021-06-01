@@ -11,6 +11,9 @@
     "algoliasearch": "^4.9.1",
     "autocomplete.js": "^0.38.0",
     "bootstrap": "4.6",
+    "chart.js": "^3.3.2",
+    "chartkick": "^4.0.4",
+    "highcharts": "^9.1.0",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "turbolinks": "^5.2.0"
