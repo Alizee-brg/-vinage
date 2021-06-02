@@ -42,13 +42,8 @@
   <ul class="cellar-list">
     <div class="cellar-info">
       <div class="square-info">
-        <% stock = Stock.all %>
-        <% acc = 0 %>
-        <% stock.each do |stock| %>
-          <% acc += stock.quantity %>
-        <% end %>
-          <h3><i class="fas fa-wine-bottle"></i> <%= acc %></h3>
-          <span>bouteille<%= "s" if @cellar.bottles.count > 1 %></span>
+        <h3><i class="fas fa-wine-bottle"></i> <%= @bottles_nb %></h3>
+        <span>bouteille<%= "s" if @bottles_nb > 1 %></span>
       </div>
       <div class="square-info">
         <h3><i class="fas fa-medal"></i> <%= @cellar.bottles.where('year >= peak_year').count %></h3>
@@ -60,18 +55,18 @@
         <% end %>
       </div>
     </div>
-    <% @cellar.bottles.each do |bottle|%>
-    <a href="<%= bottle_path(bottle) %>">
+    <% @cellar.stocks.each do |stock|%>
+    <a href="<%= bottle_path(stock.bottle) %>">
       <li>
         <img
-          src="<%= bottle.image %>"
-          alt="<%= bottle.name.strip %>"
+          src="<%= stock.bottle.image %>"
+          alt="<%= stock.bottle.name.strip %>"
         />
         <div class="bottle-info">
-          <h4><%= bottle.name.strip %></h4>
-          <span><%= bottle.year if bottle.year > 0 %></span>
-          <p class="grape"><%= bottle.grape.name %></p>
-          <span><i class="fas fa-wine-bottle"></i> <%= bottle.stocks.first.quantity %></span>
+          <h4><%= stock.bottle.name.strip %></h4>
+          <span><%= stock.bottle.year if stock.bottle.year > 0 %></span>
+          <p class="grape"><%= stock.bottle.grape.name %></p>
+          <span><i class="fas fa-wine-bottle"></i> <%= stock.quantity %></span>
         </div>
         <div class="apogee-indicator"></div>
       </li>
