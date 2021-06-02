@@ -27,3 +27,18 @@
 		<div class="informations-bottle">
 			<h3>Région : <%= @bottle.region.name %> - Cépages : <%= @bottle.grape.name %></h3>
 		</div>
+
+		<% if user_signed_in? %>
+			<% if @in_cave.include? @bottle %>
+				<%= bottle_quantity = @stock.where('bottle_id = ?', params[:id]).first.quantity %>
+			<% else %>
+				<% bottle_quantity = 0 %>
+			<% end %>
+			
+			<%= simple_form_for [@bottle, Stock.new] do |f| %>
+					<%= f.input :quantity, input_html: { value: "#{bottle_quantity}" } %>
+          <%= f.button :submit, as: "hidden" %>
+      <% end %>
+		<% end %>
+
+		

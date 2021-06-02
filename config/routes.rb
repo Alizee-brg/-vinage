@@ -7,6 +7,6 @@ Rails.application.routes.draw do
 
   resources :cellar, only: :show
   resources :bottles, only: [:index, :show] do
-    resources :stocks, only: [:create]
+    resources :stocks, only: [:create, :update]
   end
 end
