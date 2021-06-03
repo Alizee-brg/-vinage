@@ -58,3 +58,15 @@ body {
     outline: none;
   }
 }
+
+#search-form {
+  z-index: -1;
+  /* transform: translateY(-80px); */
+  position: absolute;
+  width: 100%;
+  top: 0;
+  transition: 0.2s all ease;
+}
+.bar-active {
+  top: 90px !important;
+}
