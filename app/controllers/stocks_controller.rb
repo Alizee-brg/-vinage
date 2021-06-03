@@ -23,6 +23,12 @@ class StocksController < ApplicationController
     end
   end
 
+  def destroy
+    @stock = Stock.find(params[:id])
+    @stock.destroy
+    redirect_to cellars_show_path(@cellar)
+  end
+
   private
 
   def stocks_params

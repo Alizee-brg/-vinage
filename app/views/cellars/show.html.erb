@@ -1,18 +1,25 @@
 
 <section id="cellar">
   <div class="cellar-alert">
-    <p>Aucune action à effectuer</p>
-    <i class="fas fa-check-circle"></i>
+     <% if @cellar.bottles.where('peak_year = ?', Date.today.year) %>
+      <p> A déguster : <%= link_to "#{@cellar.bottles.where('peak_year = ?', Date.today.year)}" %> </p>
+      <i class="fas fa-check-circle"></i>
+     <% end %>
+
+     <% if @cellar.bottles.where('peak_year < ?', Date.today.year) %>
+      <p> Apogée dépassée : <%= link_to "#{@cellar.bottles.where('peak_year < ?', Date.today.year)}" %> </p>
+      <i class="fas fa-check-circle"></i>
+     <% end %>
   </div>
 
   <% data = current_user.my_wine_types %>
   <% wine_colors = {
-    "Rouge" => "#BB0000",
-    "Blanc - Sec" => "#F5F5F5",
-    "Blanc - Moelleux" => "#C7C3BD",
-    "Blanc - Liquoreux" => "#989186",
-    "Rosé - Moelleux" => "#E5769F",
-    "Rosé - Sec" => "#F1B5CB",
+    "Rouge" => "#f19197",
+    "Blanc - Sec" => "#fbf7e0",
+    "Blanc - Moelleux" => "#f7f0cb",
+    "Blanc - Liquoreux" => "#f2eabd",
+    "Rosé - Moelleux" => "#f1cbc9",
+    "Rosé - Sec" => "#f1cbc9",
     "Vin pétillant" => "#FBEAB1",
     "Vin pétillant - Demi sec" => "#F7D978"
     } %>
@@ -46,9 +53,9 @@
         <span>bouteille<%= "s" if @bottles_nb > 1 %></span>
       </div>
       <div class="square-info">
-        <h3><i class="fas fa-medal"></i> <%= @cellar.bottles.where('year >= peak_year').count %></h3>
+        <h3><i class="fas fa-medal"></i> </h3>
 
-        <% if @cellar.bottles.where('year >= peak_year').count > 1 %>
+        <% if @cellar.bottles.where('peak_year = ?', Date.today.year).count > 1 %>
           <span><%= "bouteilles à leur apogée" %></span>
         <% else %>
           <span><%= "bouteille à son apogée" %></span>
@@ -56,21 +63,22 @@
       </div>
     </div>
     <% @cellar.stocks.each do |stock|%>
-    <a href="<%= bottle_path(stock.bottle) %>">
-      <li>
-        <img
-          src="<%= stock.bottle.image %>"
-          alt="<%= stock.bottle.name.strip %>"
-        />
-        <div class="bottle-info">
-          <h4><%= stock.bottle.name.strip %></h4>
-          <span><%= stock.bottle.year if stock.bottle.year > 0 %></span>
-          <p class="grape"><%= stock.bottle.grape.name %></p>
-          <span><i class="fas fa-wine-bottle"></i> <%= stock.quantity %></span>
-        </div>
-        <div class="apogee-indicator"></div>
-      </li>
-    </a>
+      <a href="<%= bottle_path(stock.bottle) %>">
+        <li>
+          <img
+            src="<%= stock.bottle.image %>"
+            alt="<%= stock.bottle.name.strip %>"
+          />
+          <div class="bottle-info">
+            <h4><%= stock.bottle.name.strip %></h4>
+            <span><%= stock.bottle.year if stock.bottle.year > 0 %></span>
+            <p class="grape"><%= stock.bottle.grape.name %></p>
+            <span><i class="fas fa-wine-bottle"></i> <%= stock.quantity %></span>
+            <span> <%= link_to 'S', bottle_stock_path(stock.bottle, stock), method: :delete %> </span>
+          </div>
+          <div class="apogee-indicator"></div>
+        </li>
+      </a>
     <% end %>
   </ul>
 </section>
