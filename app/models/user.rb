@@ -11,10 +11,12 @@ class User < ApplicationRecord
   end
 
   def my_wine_types
-    quantities = cellar.stocks.group_by(&:quantity).keys
-    wine_types = cellar.stocks.map do |stock|
+    stocks_by_type = self.cellar.stocks.group_by do |stock|
       stock.bottle.wine_type.name
     end
-    Hash[wine_types.zip quantities]
+    stocks_by_type.map do |type, stocks|
+      quantity = stocks.map { |stock| stock.quantity }.sum
+      [type, quantity]
+    end.to_h
   end
 end

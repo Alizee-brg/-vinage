@@ -7,9 +7,12 @@ class BottlesController < ApplicationController
     else
       @bottles = Bottle.all
     end
+    @stock = Stock.new
   end
 
   def show
+    @stock = Stock.where('cellar_id = ?', current_user.cellar.id)
+    @in_cave = current_user.cellar.bottles
   end
 
   private

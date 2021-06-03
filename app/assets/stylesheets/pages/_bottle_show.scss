@@ -23,3 +23,33 @@
     z-index: -1;
   }
 }
+
+.cave-control {
+  width: 100%;
+  .form-controls {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    .form-group {
+      margin: 0;
+    }
+    label {
+      display: none;
+    }
+    input {
+      width: 60px;
+      text-align: center;
+    }
+    #btn-show-submit {
+      display: none;
+    }
+    button {
+      background-color: $prim;
+      border: none;
+      color: #fff;
+      padding: 0 1em;
+      font-size: 1.5em;
+    }
+  }
+}
