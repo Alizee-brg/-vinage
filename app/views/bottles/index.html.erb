@@ -14,7 +14,12 @@
             <p class="grape"><%= bottle.grape.name %></p>
           </div>
         </a>
-        <a href="" class="add">+</a>
+
+<%# stock = Stock.new#(bottle: Bottle.last, cellar: Cellar.first, quantity: 3#) %>
+
+        <%= simple_form_for [bottle, @stock] do |f| %> 
+          <%= f.button :submit, value: "+", class: "add" %>
+        <% end %>
       </li>
     <% end %>
   </ul>
