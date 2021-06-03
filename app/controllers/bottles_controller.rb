@@ -12,6 +12,7 @@ class BottlesController < ApplicationController
 
   def show
     @stock = Stock.find_by(cellar: current_user.cellar, bottle: @bottle)
+    @stock = !@stock.nil? ? @stock : Stock.create(cellar: current_user.cellar, bottle: @bottle, quantity: 0)
     @in_cave = current_user.cellar.bottles
   end
 

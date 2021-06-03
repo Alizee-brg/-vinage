@@ -21,16 +21,16 @@
 			<p><%= @bottle.description %></p>
 		</div>
 		<div class="informations-bottle">
-			<p><%= "La bouteille sera à son appogée en : #{@bottle.year + 10}" %></p>
+			<p><%= "La bouteille sera à son appogée en : #{@bottle.peak_year}" %></p>
 			<p>Température idéale pour la conservation: <br><%= @bottle.preservation_advice %></p>
 		</div>
 		<div class="informations-bottle">
 			<h3>Région : <%= @bottle.region.name %> - Cépages : <%= @bottle.grape.name %></h3>
 		</div>
 
-		<% if user_signed_in? && @stock.present? %>
-			<%= simple_form_for [@bottle, Stock.new], url: bottle_stock_path(@bottle, @stock.id), method: :patch do |f| %>
-					<%= f.input :quantity, input_html: { value: "#{@stock.quantity}" } %>
+		<% if user_signed_in? %>
+			<%= simple_form_for [@bottle, @stock], url: bottle_stock_path(@bottle, @stock.id), method: :patch do |f| %>
+					<%= f.input :quantity, input_html: { value: "#{@stock.quantity}", min: 0 } %>
           <%= f.button :submit, value: "Update stock" %>
       <% end %>
 		<% end %>
