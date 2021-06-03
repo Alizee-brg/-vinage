@@ -2,9 +2,9 @@
 <section id="cellar">
 <% peak_year_ready = @cellar.bottles.where('peak_year = ?', Date.today.year) %>
 <% peak_year_late = @cellar.bottles.where('peak_year < ?', Date.today.year) %>
-
-  <% if peak_year_ready %>
-    <% peak_year_ready.each do |bottle| %>
+  
+  <% peak_year_ready.each do |bottle| %>
+    <% if peak_year_ready.length > 0 && @cellar.count_quantity > 0 && Stock.find_by(cellar: @cellar, bottle: bottle).quantity > 0%>
       <div class="cellar-alert-ok">
         <i class="fas fa-check-circle"></i>
         <p>A déguster : <%= link_to "#{bottle.name}, #{bottle.year}", bottle_path(bottle) %></p>
@@ -12,8 +12,8 @@
     <% end %>
   <% end %> 
 
-  <% if peak_year_late %>
-    <% peak_year_late.each do |bottle| %>
+  <% peak_year_late.each do |bottle| %>
+    <% if peak_year_late.length > 0 && @cellar.count_quantity > 0 && Stock.find_by(cellar: @cellar, bottle: bottle).quantity > 0%>
       <% if bottle.year != 0 %>
         <div class="cellar-alert-warning">
           <i class="fas fa-exclamation-circle"></i>
@@ -35,12 +35,12 @@
     "Vin pétillant - Demi sec" => "#F7D978"
     } %>
   <% colors = [] %>
-
+  
   <% data.each do |score, _| %>
     <% colors << wine_colors[score] %>
   <% end %>
 
-  <% if data.present? %>
+  <% if data.present? && @cellar.count_quantity > 0 %>
     <%= pie_chart data, colors: colors %>
   <% else %> 
     <img src="https://lottiefiles.com/iframe/37267-swirling-wine"" alt="">
@@ -49,13 +49,15 @@
 
   <div class="cellar-overview">
     <div class="cellar-img">
-    <% if @cellar.bottles.count > 1 %>
+    <% if @cellar.bottles.count > 1 && @cellar.count_quantity > 0 %>
         <% @cellar.bottles.last(3).each do |bottle|%>
-        <img
-          src="<%= bottle.image %>"
-          alt="<%= bottle.name.strip %>"
-        />
-      <% end %>
+          <% if Stock.find_by(cellar: @cellar, bottle: bottle).quantity > 0 %>
+            <img
+              src="<%= bottle.image %>"
+              alt="<%= bottle.name.strip %>"
+            />
+          <% end %>
+    <% end %>
     </div>
     <% end %>
 
@@ -63,11 +65,22 @@
   <ul class="cellar-list">
     <div class="cellar-info">
       <div class="square-info">
-        <h3><i class="fas fa-wine-bottle"></i> <%= @bottles_nb %></h3>
+        <h3><i class="fas fa-wine-bottle"></i> <%= @cellar.count_quantity%></h3>
         <span>bouteille<%= "s" if @bottles_nb > 1 %></span>
       </div>
       <div class="square-info">
-        <h3><i class="fas fa-medal"></i> <%= @cellar.bottles.where('peak_year = ?', Date.today.year).count %></h3>
+        
+          <% if @cellar.count_quantity > 0 %>
+            <h3>
+              <i class="fas fa-medal"></i> 
+              <%= @cellar.bottles.where('peak_year = ?', Date.today.year).count %>
+            </h3>
+          <% else %>
+            <h3>
+              <i class="fas fa-medal"></i> 
+              0
+            </h3>
+          <% end %>
         
         <% if @cellar.bottles.where('peak_year = ?', Date.today.year).count > 1 %>
           <span><%= "bouteilles à leur apogée" %></span>
