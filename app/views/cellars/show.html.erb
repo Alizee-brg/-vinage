@@ -1,16 +1,27 @@
 
 <section id="cellar">
-  <div class="cellar-alert">
-     <% if @cellar.bottles.where('peak_year = ?', Date.today.year) %>
-      <p> A déguster : <%= link_to "#{@cellar.bottles.where('peak_year = ?', Date.today.year)}" %> </p>
-      <i class="fas fa-check-circle"></i>
-     <% end %>
+<% peak_year_ready = @cellar.bottles.where('peak_year = ?', Date.today.year) %>
+<% peak_year_late = @cellar.bottles.where('peak_year < ?', Date.today.year) %>
 
-     <% if @cellar.bottles.where('peak_year < ?', Date.today.year) %>
-      <p> Apogée dépassée : <%= link_to "#{@cellar.bottles.where('peak_year < ?', Date.today.year)}" %> </p>
-      <i class="fas fa-check-circle"></i>
-     <% end %>
-  </div>
+  <% if peak_year_ready %>
+    <% peak_year_ready.each do |bottle| %>
+      <div class="cellar-alert">
+        <p> A déguster : <%= link_to "#{bottle.name}, #{bottle.year}", bottle_path(bottle) %> </p>
+        <i class="fas fa-check-circle"></i>
+      </div>
+    <% end %>
+  <% end %> 
+
+  <% if peak_year_late %>
+    <% peak_year_late.each do |bottle| %>
+      <% if bottle.year != 0 %>
+        <div class="cellar-alert">
+          <p> Apogée dépassée : <%= link_to "#{bottle.name}, #{bottle.year}", bottle_path(bottle)%> </p>
+          <i class="fas fa-check-circle"></i>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %> 
 
   <% data = current_user.my_wine_types %>
   <% wine_colors = {
@@ -53,8 +64,8 @@
         <span>bouteille<%= "s" if @bottles_nb > 1 %></span>
       </div>
       <div class="square-info">
-        <h3><i class="fas fa-medal"></i> </h3>
-
+        <h3><i class="fas fa-medal"></i> <%= @cellar.bottles.where('peak_year = ?', Date.today.year).count %></h3>
+        
         <% if @cellar.bottles.where('peak_year = ?', Date.today.year).count > 1 %>
           <span><%= "bouteilles à leur apogée" %></span>
         <% else %>
@@ -63,6 +74,7 @@
       </div>
     </div>
     <% @cellar.stocks.each do |stock|%>
+    <% if stock.quantity > 0 %>
       <a href="<%= bottle_path(stock.bottle) %>">
         <li>
           <img
@@ -74,11 +86,12 @@
             <span><%= stock.bottle.year if stock.bottle.year > 0 %></span>
             <p class="grape"><%= stock.bottle.grape.name %></p>
             <span><i class="fas fa-wine-bottle"></i> <%= stock.quantity %></span>
-            <span> <%= link_to 'S', bottle_stock_path(stock.bottle, stock), method: :delete %> </span>
+            <span> <%= link_to 'S', bottle_stock_path(stock.bottle, stock), method: :delete, data: {confirm: "Voulez vous vraiment supprimer #{stock.quantity} #{stock.bottle.name.strip}"} %> </span>
           </div>
           <div class="apogee-indicator"></div>
         </li>
       </a>
+      <% end %>
     <% end %>
   </ul>
 </section>
