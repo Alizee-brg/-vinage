@@ -40,6 +40,12 @@
     <% colors << wine_colors[score] %>
   <% end %>
 
+  <% if data.present? %>
+    <%= pie_chart data, colors: colors %>
+  <% else %> 
+    <img src="https://lottiefiles.com/iframe/37267-swirling-wine"" alt="">
+  <% end %> 
+
 
   <div class="cellar-overview">
     <div class="cellar-img">
