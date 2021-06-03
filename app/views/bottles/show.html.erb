@@ -29,13 +29,16 @@
         
         <div class="form-controls">
           <button id="btn-select-less">-</button>
-          <%= simple_form_for [@bottle, Stock.new] do |f| %>
-              <%= f.input :quantity, label: "Quantité", input_html: { value: "#{bottle_quantity}" }, class: "quantity-display" %>
-              <%= f.button :submit, as: "hidden", id: "btn-show-submit" %>
+          <% if user_signed_in? && @stock.present? %>
+            <%= simple_form_for [@bottle, Stock.new], url: bottle_stock_path(@bottle, @stock.id), method: :patch do |f| %>
+              <%= f.input :quantity, input_html: { value: "#{@stock.quantity}" } %>
+              <%= f.button :submit, value: "Update stock" %>
+            <% end %>
           <% end %>
            <button id="btn-select-more">+</button>
         </div>
-      <% end %>
+        <% end %>
     </div>
+
 
 	</section>

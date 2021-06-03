@@ -1,17 +1,14 @@
 class StocksController < ApplicationController
 
   def create
-    
-    if Stock.find_by(bottle_id: params[:bottle_id]).present?
-      @stock = Stock.find_by(bottle_id: params[:bottle_id])
-      @stock.update(quantity: @stock.quantity + 1)
-    else 
-      @stock = Stock.new
+    @stock = current_user.cellar.stocks.find_or_initialize_by(bottle_id: params[:bottle_id])
+    if @stock.new_record?
       @stock.cellar = current_user.cellar
-      @stock.bottle = Bottle.find(params[:bottle_id])
       @stock.quantity = 1
+    else 
+      @stock.update(quantity: @stock.quantity + 1)
     end
-    
+
     if @stock.save!
       redirect_to cellars_show_path(@stock.cellar)
     end
@@ -19,7 +16,7 @@ class StocksController < ApplicationController
 
   def update
     @stock = Stock.find(params[:id])
-    if @stock.update!(stock_params)
+    if @stock.update!(stocks_params)
       redirect_to cellars_show_path(@stock.cellar)
     end
   end
@@ -27,6 +24,6 @@ class StocksController < ApplicationController
   private
 
   def stocks_params
-    params.require(:stocks).permit(:bottle_id, :quantity)
+    params.require(:stock).permit(:bottle_id, :quantity)
   end
 end

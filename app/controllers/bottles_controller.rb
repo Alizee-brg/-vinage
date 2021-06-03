@@ -11,7 +11,7 @@ class BottlesController < ApplicationController
   end
 
   def show
-    @stock = Stock.where('cellar_id = ?', current_user.cellar.id)
+    @stock = Stock.find_by(cellar: current_user.cellar, bottle: @bottle)
     @in_cave = current_user.cellar.bottles
   end
 
