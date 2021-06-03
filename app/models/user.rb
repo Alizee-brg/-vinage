@@ -11,12 +11,21 @@ class User < ApplicationRecord
   end
 
   def my_wine_types
-    stocks_by_type = self.cellar.stocks.group_by do |stock|
-      stock.bottle.wine_type.name
+    stocks_by_type = {}
+    stocks_by_type_inter = self.cellar.stocks.group_by do |stock|
+      if stock.quantity > 0
+        stock.bottle.wine_type.name
+      end
     end
-    stocks_by_type.map do |type, stocks|
-      quantity = stocks.map { |stock| stock.quantity }.sum
-      [type, quantity]
-    end.to_h
+    stocks_by_type_inter.map do |type, stocks|
+      quantity = 0
+      stocks.each do |stock|
+        quantity += stock.quantity
+      end
+      stocks_by_type[type] = quantity
+    end
+    stocks_by_type = stocks_by_type.to_h
+    stocks_by_type.delete(nil)
+    stocks_by_type
   end
 end
