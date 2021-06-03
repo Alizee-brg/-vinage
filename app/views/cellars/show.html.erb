@@ -40,16 +40,25 @@
     <% colors << wine_colors[score] %>
   <% end %>
 
+  <% if data.present? %>
+    <%= pie_chart data, colors: colors %>
+  <% else %> 
+    <img src="https://lottiefiles.com/iframe/37267-swirling-wine"" alt="">
+  <% end %>
+
 
   <div class="cellar-overview">
     <div class="cellar-img">
-    <% @cellar.bottles.last(3).each do |bottle|%>
-      <img
-        src="<%= bottle.image %>"
-        alt="<%= bottle.name.strip %>"
-      />
-    <% end %>
+    <% if @cellar.bottles.count > 1 %>
+        <% @cellar.bottles.last(3).each do |bottle|%>
+        <img
+          src="<%= bottle.image %>"
+          alt="<%= bottle.name.strip %>"
+        />
+      <% end %>
     </div>
+    <% end %>
+
   </div>
   <ul class="cellar-list">
     <div class="cellar-info">
