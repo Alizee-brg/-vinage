@@ -1,44 +1,52 @@
 <section class="bottle-show">
-    <div class="bottle-title ">
-			<h1><%= @bottle.name %></h1>
-			<h2><%= @bottle.vineyard %></h2>
-			<h3><%= @bottle.year %></h3>
-    </div>
-		<div class="image-show-bottle">
+    <div class="image-show-bottle <%= @wine_bg %>">
       <img src="<%=@bottle.image%>" alt="">
       <span class="year-overview"><%= @bottle.year %></span>
 		</div>
-			<p><%= @bottle.description %></p>
-		</div>
-		<div class="informations-bottle">
-			<p><%= "La bouteille sera à son appogée en : #{@bottle.year + 10}" %></p>
-			<p>Température idéale pour la conservation: <br><%= @bottle.preservation_advice %></p>
-		</div>
-		<div class="informations-bottle">
-			<h3>Région : <%= @bottle.region.name %> - Cépages : <%= @bottle.grape.name %></h3>
-		</div>
-   
-
-    <div class="cave-control">
-      <% if user_signed_in? %>
-        <% if @in_cave.include? @bottle %>
-          <%= bottle_quantity = @stock.where('bottle_id = ?', params[:id]).first.quantity %>
-        <% else %>
-          <% bottle_quantity = 0 %>
-        <% end %>
-        
-        <div class="form-controls">
-          <button id="btn-select-less">-</button>
-          <% if user_signed_in? && @stock.present? %>
-            <%= simple_form_for [@bottle, Stock.new], url: bottle_stock_path(@bottle, @stock.id), method: :patch do |f| %>
-              <%= f.input :quantity, input_html: { value: "#{@stock.quantity}" } %>
-              <%= f.button :submit, value: "Update stock" %>
-            <% end %>
-          <% end %>
-           <button id="btn-select-more">+</button>
+    <div class="bottle-info">
+      <div class="bottle-title ">
+        <h1><%= @bottle.name %></h1>
+        <h2><%= @bottle.vineyard.capitalize %></h2>
+      </div>
+      <div class="bottle-spec">
+        <div class="sub-spec">
+          <span>Type</span>
+          <p><%= @bottle.wine_type.name %></p>
         </div>
-        <% end %>
+        <div class="sub-spec">
+          <span>Année</span>
+          <p><%= @bottle.year %></p>
+        </div>
+        <div class="sub-spec">
+          <span>Appogée</span>
+          <p><%= @bottle.peak_year %></p>
+        </div>
+      </div>
+      <div class="spec-bottle">
+        <p>Température idéale pour la conservation: <br><%= @bottle.preservation_advice %></p>
+      </div>
+      <div class="spec-bottle">
+        <p>Région : <%= @bottle.region.name %></p>
+        <p>Cépages : <%= @bottle.grape.name %></p>
+      </div>
     </div>
+    <div class="cave-control">
+          
+          <div class="form-controls">
+            
+            <% if user_signed_in? && @stock.present? %>
+            
+              <%= simple_form_for [@bottle, Stock.new], url: bottle_stock_path(@bottle, @stock.id), method: :patch do |f| %>
+                <div class="d-flex align-item-center">
+                  <button id="btn-select-less">-</button>
+                  <%= f.input :quantity, input_html: { value: "#{@stock.quantity}" } %>
+                  <button id="btn-select-more">+</button>
+                </div>
+                <%= f.button :submit, value: "Actualiser", class: "btn-submit"%>
+              <% end %>
+            <% end %>
+          </div>
+      </div>
 
 
 	</section>

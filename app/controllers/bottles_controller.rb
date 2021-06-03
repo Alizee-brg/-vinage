@@ -13,6 +13,12 @@ class BottlesController < ApplicationController
   def show
     @stock = Stock.find_by(cellar: current_user.cellar, bottle: @bottle)
     @in_cave = current_user.cellar.bottles
+
+    @wine_bg = "winebg-red" if @bottle.wine_type.name.include? "Rouge"
+    @wine_bg = "winebg-white" if @bottle.wine_type.name.include? "Blanc"
+    @wine_bg = "winebg-pink" if @bottle.wine_type.name.include? "Rosé"
+    @wine_bg = "winebg-champ" if @bottle.wine_type.name.include? "pétillant" 
+    
   end
 
   private
