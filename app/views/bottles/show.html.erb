@@ -36,10 +36,10 @@
             
             <% if user_signed_in? && @stock.present? %>
             
-              <%= simple_form_for [@bottle, Stock.new], url: bottle_stock_path(@bottle, @stock.id), method: :patch do |f| %>
+              <%= simple_form_for [@bottle, @stock], url: bottle_stock_path(@bottle, @stock.id), method: :patch do |f| %>
                 <div class="d-flex align-item-center">
                   <button id="btn-select-less">-</button>
-                  <%= f.input :quantity, input_html: { value: "#{@stock.quantity}" } %>
+                  <%= f.input :quantity, input_html: { value: "#{@stock.quantity}", min: 0 } %>
                   <button id="btn-select-more">+</button>
                 </div>
                 <%= f.button :submit, value: "Actualiser", class: "btn-submit"%>
@@ -47,6 +47,5 @@
             <% end %>
           </div>
       </div>
-
 
 	</section>
