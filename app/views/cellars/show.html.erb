@@ -5,9 +5,9 @@
 
   <% if peak_year_ready %>
     <% peak_year_ready.each do |bottle| %>
-      <div class="cellar-alert">
-        <p> A déguster : <%= link_to "#{bottle.name}, #{bottle.year}", bottle_path(bottle) %> </p>
+      <div class="cellar-alert-ok">
         <i class="fas fa-check-circle"></i>
+        <p>A déguster : <%= link_to "#{bottle.name}, #{bottle.year}", bottle_path(bottle) %></p>
       </div>
     <% end %>
   <% end %> 
@@ -15,9 +15,9 @@
   <% if peak_year_late %>
     <% peak_year_late.each do |bottle| %>
       <% if bottle.year != 0 %>
-        <div class="cellar-alert">
-          <p> Apogée dépassée : <%= link_to "#{bottle.name}, #{bottle.year}", bottle_path(bottle)%> </p>
-          <i class="fas fa-check-circle"></i>
+        <div class="cellar-alert-warning">
+          <i class="fas fa-exclamation-circle"></i>
+          <p>Apogée dépassée : <%= link_to "#{bottle.name}, #{bottle.year}", bottle_path(bottle)%></p>
         </div>
       <% end %>
     <% end %>
