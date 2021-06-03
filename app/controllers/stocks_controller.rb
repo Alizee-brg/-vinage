@@ -1,14 +1,12 @@
 class StocksController < ApplicationController
 
   def create
-    if Stock.find_by(bottle_id: params[:bottle_id]).present?
-      @stock = Stock.find_by(bottle_id: params[:bottle_id])
-      @stock.update(quantity: @stock.quantity + 1)
-    else 
-      @stock = Stock.new
+    @stock = current_user.cellar.stocks.find_or_initialize_by(bottle_id: params[:bottle_id])
+    if @stock.new_record?
       @stock.cellar = current_user.cellar
-      @stock.bottle = Bottle.find(params[:bottle_id])
       @stock.quantity = 1
+    else 
+      @stock.update(quantity: @stock.quantity + 1)
     end
     
     if @stock.save
