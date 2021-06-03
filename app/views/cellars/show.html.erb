@@ -69,7 +69,7 @@
     </div>
     <% @cellar.stocks.each do |stock|%>
     <% if stock.quantity > 0 %>
-      <a href="<%= bottle_path(stock.bottle) %>">
+      <a href="<%= bottle_path(stock.bottle) %>" class="link-to-bottle">
         <li>
           <img
             src="<%= stock.bottle.image %>"
@@ -79,8 +79,12 @@
             <h4><%= stock.bottle.name.strip %></h4>
             <span><%= stock.bottle.year if stock.bottle.year > 0 %></span>
             <p class="grape"><%= stock.bottle.grape.name %></p>
-            <span><i class="fas fa-wine-bottle"></i> <%= stock.quantity %></span>
-            <span> <%= link_to 'S', bottle_stock_path(stock.bottle, stock), method: :delete, data: {confirm: "Voulez vous vraiment supprimer #{stock.quantity} #{stock.bottle.name.strip}"} %> </span>
+            <div class="d-flex w-100 align-item-center justify-content-between">
+              <span><i class="fas fa-wine-bottle"></i> <%= stock.quantity %></span>
+              <%= link_to bottle_stock_path(stock.bottle, stock), method: :delete, data: {confirm: "Voulez vous vraiment supprimer #{stock.quantity} #{stock.bottle.name.strip}"} do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </div>
           </div>
           <div class="apogee-indicator"></div>
         </li>
