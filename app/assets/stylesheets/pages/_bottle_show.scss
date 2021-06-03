@@ -1,5 +1,6 @@
-.bottle-show {
+.bottle-show-page {
   position: relative;
+  padding-bottom: 3em;
   .image-show-bottle {
     display: flex;
     align-items: center;
@@ -58,6 +59,9 @@
       }
     }
   }
+  .spec-detail{
+      font-weight: bold;
+    }
 }
 
 .cave-control {

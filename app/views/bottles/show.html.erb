@@ -1,7 +1,7 @@
-<section class="bottle-show">
+<section class="bottle-show-page">
     <div class="image-show-bottle <%= @wine_bg %>">
       <img src="<%=@bottle.image%>" alt="">
-      <span class="year-overview"><%= @bottle.year %></span>
+      <span class="year-overview"><%= @bottle.year if @bottle.year > 0 %></span>
 		</div>
     <div class="bottle-info">
       <div class="bottle-title ">
@@ -13,21 +13,31 @@
           <span>Type</span>
           <p><%= @bottle.wine_type.name %></p>
         </div>
-        <div class="sub-spec">
-          <span>Année</span>
-          <p><%= @bottle.year %></p>
-        </div>
-        <div class="sub-spec">
-          <span>Appogée</span>
-          <p><%= @bottle.peak_year %></p>
-        </div>
+				<% if @bottle.year != 0 %>
+					<div class="sub-spec">
+						<span>Année</span>
+						<p><%= @bottle.year %></p>
+					</div>
+				<% end %>
+				<% if @bottle.peak_year > 0 %>
+					<div class="sub-spec">
+						<span>Appogée</span>
+						<p><%= @bottle.peak_year %></p>
+					</div>
+				<% end %>
+      </div>
+			<div class="spec-bottle">
+        <p><br><%= @bottle.description %></p>
       </div>
       <div class="spec-bottle">
-        <p>Température : <br><%= @bottle.preservation_advice %></p>
+        <p><span class="spec-detail">Température :</span> <%= @bottle.preservation_advice %></p>
       </div>
       <div class="spec-bottle">
-        <p>Région : <%= @bottle.region.name %></p>
-        <p>Cépages : <%= @bottle.grape.name %></p>
+        <p><span class="spec-detail">Région :</span> <%= @bottle.region.name %></p>
+        <p><span class="spec-detail">Cépages :</span> <%= @bottle.grape.name %></p>
+				<% @bottle.foods.each do |food| %>
+          <p><span class="spec-detail">À associer avec :</span> <%= food.name %></p>
+        <% end %>
       </div>
     </div>
     <div class="cave-control">
