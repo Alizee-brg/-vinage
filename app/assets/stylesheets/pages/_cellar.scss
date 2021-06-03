@@ -70,13 +70,16 @@
       color: black;
       text-decoration: none;
     }
+    .link-to-bottle {
+      width: 30%;
+    }
     li {
       display: flex;
       align-items: center;
       border-bottom: 1px solid lightgray;
       padding: 1em 0;
       img {
-        width: 30%;
+        width: 100%;
       }
       .bottle-info {
         flex: 1 1;

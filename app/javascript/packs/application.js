@@ -27,19 +27,19 @@ import "chartkick/chart.js";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { listenFocus } from "../channels/searchFocus";
+import { formBottles } from "../channels/formBottles";
 
 document.addEventListener("turbolinks:load", () => {
   // Call your functions here, e.g:
   // initSelect2();
   listenFocus();
+  formBottles();
 });
-
 
 // const resultList = document.querySelectorAll('.result-list > li');
 
 // const btnRouge = document.getElementById('filter-rouge');
 // const btnBlanc = document.getElementById('filter-blanc');
-
 
 // btnRouge.addEventListener("click", () => {
 //   btnRouge.classList.toggle('active');
